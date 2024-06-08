@@ -11,11 +11,14 @@ import {
 import { widthPercentageToDP } from "react-native-responsive-screen";
 import { categoriesData } from "@/utils/categoriesData";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 
 export default function SortCategories({ selectedCategory }: any) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [itemsToShow, setItemsToShow] = useState([]);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (selectedCategory) {
@@ -102,9 +105,21 @@ export default function SortCategories({ selectedCategory }: any) {
             <Text style={styles.description}>
               {(selectedItem as any)?.description}
             </Text>
-            <Text onPress={closeModal} style={styles.closeButton}>
-              Close
-            </Text>
+
+            <View style={{ flexDirection: "row" }}>
+              <Text onPress={closeModal} style={styles.closeButton}>
+                Close
+              </Text>
+              <Text
+                onPress={() => {
+                  closeModal();
+                  router.push(`/home/${(selectedItem as any)?.id}`);
+                }}
+                style={styles.redirectButton}
+              >
+                See more
+              </Text>
+            </View>
           </View>
         </View>
       </Modal>
@@ -179,6 +194,15 @@ const styles = StyleSheet.create({
   description: { marginBottom: 20 },
   closeButton: {
     backgroundColor: "#007BFF",
+    color: "#fff",
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderRadius: 10,
+    padding: 10,
+    marginRight: 8,
+  },
+  redirectButton: {
+    backgroundColor: "#00aa99",
     color: "#fff",
     paddingLeft: 24,
     paddingRight: 24,
