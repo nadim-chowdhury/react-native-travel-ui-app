@@ -1,3 +1,4 @@
+import React from "react";
 import {
   View,
   Text,
@@ -7,10 +8,12 @@ import {
   Image,
   TextInput,
   StyleSheet,
+  Linking,
 } from "react-native";
 import { widthPercentageToDP } from "react-native-responsive-screen";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "@/components/Categories";
+import SortCategories from "@/components/SortCategories";
 
 export default function Home() {
   return (
@@ -40,6 +43,39 @@ export default function Home() {
 
         <View style={styles.categoriesContainer}>
           <Categories />
+        </View>
+
+        <View style={styles.sortCategoriesContainer}>
+          <SortCategories />
+        </View>
+
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Nadim Chowdhury</Text>
+
+          <View style={styles.socialIconsContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL("https://www.linkedin.com/in/nadim-chowdhury");
+              }}
+              style={styles.socialIcon}
+            >
+              <Image
+                source={require("../../assets/images/linkedin.png")}
+                style={styles.socialIconImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL("https://github.com/nadim-chowdhury");
+              }}
+              style={styles.socialIcon}
+            >
+              <Image
+                source={require("../../assets/images/github.png")}
+                style={styles.socialIconImage}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -88,5 +124,32 @@ const styles = StyleSheet.create({
   },
   categoriesContainer: {
     marginBottom: 20,
+  },
+  sortCategoriesContainer: {
+    marginBottom: 20,
+    // paddingHorizontal: 16,
+  },
+  socialIconsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  socialIcon: {
+    marginHorizontal: 4,
+  },
+  socialIconImage: {
+    width: widthPercentageToDP(6),
+    height: widthPercentageToDP(6),
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  footerText: {
+    marginRight: 4,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#222",
+    textTransform: "uppercase",
   },
 });

@@ -38,7 +38,7 @@ export default function Categories() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    // padding: 16,
   },
   header: {
     flexDirection: "row",

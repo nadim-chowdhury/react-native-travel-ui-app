@@ -1,7 +1,7 @@
 export const categoriesData = [
   {
     id: 1,
-    name: "All",
+    name: "Abstraction",
     icon: require("../assets/images/h.jpg"),
   },
   {
@@ -28,5 +28,15 @@ export const categoriesData = [
     id: 6,
     name: "Cityservices",
     icon: require("../assets/images/c.jpg"),
+  },
+  {
+    id: 7,
+    name: "Vintages",
+    icon: require("../assets/images/b.jpg"),
+  },
+  {
+    id: 8,
+    name: "Minimalist",
+    icon: require("../assets/images/a.jpg"),
   },
 ];
