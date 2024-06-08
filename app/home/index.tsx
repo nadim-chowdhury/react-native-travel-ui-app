@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -14,8 +14,11 @@ import { widthPercentageToDP } from "react-native-responsive-screen";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "@/components/Categories";
 import SortCategories from "@/components/SortCategories";
+import SubCategories from "@/components/SubCategories";
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -42,11 +45,13 @@ export default function Home() {
         </View>
 
         <View style={styles.categoriesContainer}>
-          <Categories />
+          <Categories setSelectedCategory={setSelectedCategory} />
         </View>
 
+        <SubCategories />
+
         <View style={styles.sortCategoriesContainer}>
-          <SortCategories />
+          <SortCategories selectedCategory={selectedCategory} />
         </View>
 
         <View style={styles.footer}>
@@ -144,6 +149,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#f5f5f5",
+    borderRadius: 8,
+    padding: 6,
   },
   footerText: {
     marginRight: 4,

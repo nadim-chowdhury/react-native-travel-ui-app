@@ -9,7 +9,7 @@ import {
 import { widthPercentageToDP } from "react-native-responsive-screen";
 import { categoriesData } from "../utils/categoriesData";
 
-export default function Categories() {
+export default function Categories({ setSelectedCategory }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -39,6 +39,7 @@ export default function Categories() {
 const styles = StyleSheet.create({
   container: {
     // padding: 16,
+    marginTop: 4,
   },
   header: {
     flexDirection: "row",
